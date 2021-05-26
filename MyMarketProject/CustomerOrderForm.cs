@@ -47,7 +47,6 @@ namespace MyMarketProject
         private void button1_Click(object sender, EventArgs e)
         {
             order.Clear();
-            MessageBox.Show(order.Count().ToString());
             Form_CustomerMain.adet = 0;
             dataGridView1.Columns.Clear();
             textBox_oName.Clear();
