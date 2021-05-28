@@ -82,20 +82,7 @@ namespace MyMarketProject
             }
         }
 
-        private void button_regComplete_Click(object sender, EventArgs e)
-        {
-            User user = new User();
-            user.UserTypeID = 2;
-            user.Name = textBox_regName.Text;
-            user.Surname = textBox_regSurname.Text;
-            user.UserName = textBox_regId.Text;
-            user.UserPassword = textBox_regPw.Text;
-            user.UserTelephone = textBox_regTel.Text;
-            user.UserMail = textBox_regMail.Text;
-            user.UserAddress = textBox_regAdress.Text;
-            UserManager userManager = new UserManager(new EfUserDal());
-            MessageBox.Show(userManager.Add(user).Message);
-        }
+
         private void GetProduct(Boolean b)
         {
             if (!b)
@@ -114,8 +101,8 @@ namespace MyMarketProject
                 products.RemoveAt(0);
                 foreach (var item in products)
                 {
-                    //GetProductImage(item.ProductPhotoPath)
-                    productTable.Rows.Add(GetProductImage(item.ProductPhotoPath), item.ProductId, item.ProductName, item.ProductPrice, item.ProductAmount, item.CategoryId, item.ProductPhotoPath);
+                    productTable.Rows.Add(GetProductImage(item.ProductPhotoPath), item.ProductId, item.ProductName, 
+                        item.ProductPrice, item.ProductAmount, item.CategoryId, item.ProductPhotoPath);
                 }
             }
 
@@ -132,6 +119,20 @@ namespace MyMarketProject
                 Image image = Bitmap.FromStream(stream);
                 return image;
             }
+        }
+        private void button_regComplete_Click(object sender, EventArgs e)
+        {
+            User user = new User();
+            user.UserTypeID = 2;
+            user.Name = textBox_regName.Text;
+            user.Surname = textBox_regSurname.Text;
+            user.UserName = textBox_regId.Text;
+            user.UserPassword = textBox_regPw.Text;
+            user.UserTelephone = textBox_regTel.Text;
+            user.UserMail = textBox_regMail.Text;
+            user.UserAddress = textBox_regAdress.Text;
+            UserManager userManager = new UserManager(new EfUserDal());
+            MessageBox.Show(userManager.Add(user).Message);
         }
 
         private void textBox_regTel_TextChanged(object sender, EventArgs e)
